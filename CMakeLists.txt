@@ -111,7 +111,7 @@ if(BUILD_UNIT_TESTS)
 	)
 
 	# disable slow tests
-	set(SLOW_TEST_FILES "")
+	# set(SLOW_TEST_FILES "")
 
 	add_executable(test ${FAST_TEST_FILES} ${SLOW_TEST_FILES})
 	target_link_libraries(test ${PROJECT_NAME})
