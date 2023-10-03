@@ -74,7 +74,6 @@ namespace smk {
 	str8 to_str8(uint16_t val) { return lexical_cast<str8>(val); }
 	str8 to_str8(uint32_t val) { return lexical_cast<str8>(val); }
 	str8 to_str8(uint64_t val) { return lexical_cast<str8>(val); }
-	str8 to_str8(size_t val) { return lexical_cast<str8>(val); }
 	str8 to_str8(float val) { return lexical_cast<str8>(val); }
 	str8 to_str8(double val) { return lexical_cast<str8>(val); }
 	str8 to_str8(bool val) { return val ? str_traits<str8::value_type>::bTrue() : str_traits<str8::value_type>::bFalse(); }
@@ -87,10 +86,14 @@ namespace smk {
 	str32 to_str32(uint16_t val) { return copy_cast<str32, str8>(to_str8(val)); }
 	str32 to_str32(uint32_t val) { return copy_cast<str32, str8>(to_str8(val)); }
 	str32 to_str32(uint64_t val) { return copy_cast<str32, str8>(to_str8(val)); }
-	str32 to_str32(size_t val) { return copy_cast<str32, str8>(to_str8(val)); }
 	str32 to_str32(float val) { return copy_cast<str32, str8>(to_str8(val)); }
 	str32 to_str32(double val) { return copy_cast<str32, str8>(to_str8(val)); }
 	str32 to_str32(bool val) { return val ? str_traits<str32::value_type>::bTrue() : str_traits<str32::value_type>::bFalse(); }
+
+#ifndef _MSC_VER
+	str8 to_str8(size_t val) { return lexical_cast<str8>(val); }
+	str32 to_str32(size_t val) { return copy_cast<str32, str8>(to_str8(val)); }
+#endif //_MSC_VER
 
 	int32_t str8toi(str8 const& val) { return lexical_cast<int32_t>(val); }
 	int64_t str8toi64(str8 const& val) { return lexical_cast<int64_t>(val); }

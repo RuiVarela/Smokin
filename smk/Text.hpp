@@ -22,7 +22,6 @@ namespace smk
 	str8 to_str8(uint16_t val);
 	str8 to_str8(uint32_t val);
 	str8 to_str8(uint64_t val);
-	str8 to_str8(size_t val);
 	str8 to_str8(float val);
 	str8 to_str8(double val);
 	str8 to_str8(bool val);
@@ -35,10 +34,14 @@ namespace smk
 	str32 to_str32(uint16_t val);
 	str32 to_str32(uint32_t val);
 	str32 to_str32(uint64_t val);
-	str32 to_str32(size_t val);
 	str32 to_str32(float val);
 	str32 to_str32(double val);
 	str32 to_str32(bool val);
+
+#ifndef _MSC_VER
+	str8 to_str8(size_t val);
+	str32 to_str32(size_t val);
+#endif //_MSC_VER
 
 	int32_t str8toi(str8 const& val);
 	int64_t str8toi64(str8 const& val);

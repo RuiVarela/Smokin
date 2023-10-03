@@ -203,6 +203,8 @@ int run(int argc, char **argv) {
         current = panorama_image(current, next, sigma, thresh, nms, inlier_thresh, iters, cutoff, no_match);
         saveImage("generated.png", current);
     }
+
+    return 0;
 }
 
 int main(int argc, char **argv)
