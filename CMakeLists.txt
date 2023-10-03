@@ -5,13 +5,15 @@ option(BUILD_UNIT_TESTS "Build unit tests executable" OFF)
 option(BUILD_EXAMPLES "Build examples executable" OFF)
 option(INCLUDE_STB_IMAGE "Include stb image binary code" ON)
 
-set(VERSION_MAJOR 1)
-set(VERSION_MINOR 0)
-set(VERSION_BUILD 2)
+if (NOT DEFINED VERSION_MAJOR)
+	set(VERSION_MAJOR 1)
+	set(VERSION_MINOR 0)
+	set(VERSION_BUILD 2)
 
-add_compile_definitions(VERSION_MAJOR=${VERSION_MAJOR})
-add_compile_definitions(VERSION_MINOR=${VERSION_MINOR})
-add_compile_definitions(VERSION_BUILD=${VERSION_BUILD})
+	add_compile_definitions(VERSION_MAJOR=${VERSION_MAJOR})
+	add_compile_definitions(VERSION_MINOR=${VERSION_MINOR})
+	add_compile_definitions(VERSION_BUILD=${VERSION_BUILD})
+endif()
 
 set(CMAKE_CXX_STANDARD 20)
 
@@ -22,7 +24,7 @@ set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 add_compile_options("$<$<C_COMPILER_ID:MSVC>:/utf-8>")
 add_compile_options("$<$<CXX_COMPILER_ID:MSVC>:/utf-8>")
 
-if(BUILD_UNIT_TESTS)
+if(INCLUDE_STB_IMAGE)
     add_definitions(-DINCLUDE_STB_IMAGE)
 endif()
 
